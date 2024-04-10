@@ -1,47 +1,24 @@
-import Button from "@mui/material/Button";
-import Snackbar from "@mui/material/Snackbar";
-import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AppLayout from "./pages/AppLayout";
+import Homepage from "./pages/Homepage";
+import Products from "./pages/Products";
+import Product from "./pages/Product";
+import Cart from "./pages/Cart";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
-  const [open, setOpen] = useState(false);
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    async function fetchProducts() {
-      const response = await fetch("http://localhost:5000/products");
-      const data = await response.json();
-      setProducts(data);
-    }
-    fetchProducts();
-  }, []);
-
   return (
-    <div className="flex h-screen items-center justify-center gap-10">
-      <Button
-        color="primary"
-        variant="contained"
-        size="large"
-        onClick={() => setOpen(true)}
-      >
-        This is a MUI button
-      </Button>
-
-      <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        open={open}
-        onClose={() => {
-          setOpen(false);
-        }}
-        message="This is a MUI toast"
-        autoHideDuration={5000}
-      />
-
-      <ul className="space-y-5">
-        {products.slice(0, 5).map((product) => (
-          <li key={product.id}>{product.name}</li>
-        ))}
-      </ul>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<Homepage />} />
+          <Route path="products" element={<Products />} />
+          <Route path="products/:id" element={<Product />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
