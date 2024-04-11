@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 
 function Hero() {
   return (
-    <div className="relative flex h-[760px] gap-[56px] bg-[#F2F0FF] ">
+    <section className="relative flex h-[760px] gap-[56px] bg-[#F2F0FF] ">
       <img
         src={lamp}
         alt="lamp"
@@ -55,7 +55,7 @@ function Hero() {
       </div>
 
       <HeroSlider />
-    </div>
+    </section>
   );
 }
 

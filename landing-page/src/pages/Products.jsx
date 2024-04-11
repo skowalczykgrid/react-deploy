@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../App";
 
 function Products() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    async function fetchProducts() {
-      const response = await fetch("http://localhost:5000/products");
-      const data = await response.json();
-      setProducts(data);
-    }
-    fetchProducts();
-  }, []);
+  const { products } = useContext(AppContext);
 
   return (
     <ul>

@@ -1,6 +1,7 @@
 import Slider from "react-slick";
 import headphones from "../assets/hero-section/headphones.png";
 import discount from "../assets/hero-section/Discount.png";
+import "../styles/Sliders.css";
 
 function HeroSlider() {
   const settings = {
@@ -10,10 +11,9 @@ function HeroSlider() {
     slidesToScroll: 1,
     arrows: false,
     fade: true,
-    dotsClass: "slick-dots left-[-430px] bottom-[10px]",
   };
   return (
-    <div className="relative h-[692px] w-[706px] py-8">
+    <div className="relative h-[692px] w-[706px] py-8" id="firstSlider">
       <Slider {...settings}>
         <div className="relative">
           <img src={headphones} alt="headphones" />

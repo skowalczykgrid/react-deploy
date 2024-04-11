@@ -6,21 +6,3 @@ body {
   font-family: "Josefin sans", sans-serif;
   box-sizing: border-box;
 }
-
-.slick-dots li button::before {
-  background-color: transparent;
-  transform: rotate(45deg);
-  opacity: 1;
-  content: "";
-  border: #fb2e86 1px solid;
-  height: 12px;
-  width: 12px;
-}
-
-.slick-dots li.slick-active button::before {
-  background-color: #fb2e86;
-  transform: rotate(45deg);
-  opacity: 1;
-  content: "";
-  border: #fb2e86 1px solid;
-}

@@ -1,0 +1,36 @@
+/* .slick-dots li button::before {
+  background-color: transparent;
+  transform: rotate(45deg);
+  opacity: 1;
+  content: "";
+  border: #fb2e86 1px solid;
+  height: 12px;
+  width: 12px;
+}
+
+.slick-dots li.slick-active button::before {
+  background-color: #fb2e86;
+  transform: rotate(45deg);
+  opacity: 1;
+  content: "";
+  border: #fb2e86 1px solid;
+} */
+
+#firstSlider .slick-dots {
+  left: -430px;
+  bottom: 10px;
+}
+
+#firstSlider .slick-dots li button::before {
+  background-color: transparent;
+  transform: rotate(45deg);
+  opacity: 1;
+  content: "";
+  border: #fb2e86 1px solid;
+  height: 12px;
+  width: 12px;
+}
+
+#firstSlider .slick-dots li.slick-active button::before {
+  background-color: #fb2e86;
+}
