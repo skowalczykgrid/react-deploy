@@ -14,6 +14,9 @@ function SearchBar() {
           color: "white",
           borderRadius: "8px",
           padding: "6px 14px",
+          "&:hover": {
+            color: "black",
+          },
         }}
       >
         <SearchOutlinedIcon />

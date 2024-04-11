@@ -4,7 +4,7 @@ import SearchBar from "./Searchbar";
 
 function HeaderMain() {
   return (
-    <div className="flex items-center gap-[80px] px-[304px] py-5">
+    <div className="flex h-[72px] items-center gap-[80px] px-[304px] py-5">
       <Logo />
       <Navigation className="mr-auto" />
       <SearchBar placeholder="Search" />
