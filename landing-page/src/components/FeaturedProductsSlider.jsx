@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 import FeaturedProductsCard from "./FeaturedProductsCard";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { AppContext } from "../App";
 
 function FeaturedSlider() {

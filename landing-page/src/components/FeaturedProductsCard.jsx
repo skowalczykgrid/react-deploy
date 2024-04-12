@@ -3,6 +3,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import ZoomInOutlinedIcon from "@mui/icons-material/ZoomInOutlined";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 function FeaturedProductsCard({ product }) {
   if (!product)
@@ -14,13 +15,37 @@ function FeaturedProductsCard({ product }) {
     <article className="group z-10 mx-3 my-8 flex h-[368px] w-[304px] flex-col items-center gap-4  rounded-lg shadow-lg transition-all hover:translate-y-[-24px]">
       <div className="relative basis-[63%]">
         <div className="absolute m-2 space-x-2 opacity-0 transition-all group-hover:opacity-100">
-          <IconButton sx={{ backgroundColor: "#E5E0FC", color: "#7E33E0" }}>
+          <IconButton
+            sx={{
+              backgroundColor: "transparent",
+              color: "#7E33E0",
+              "&:hover": {
+                backgroundColor: "#E5E0FC",
+              },
+            }}
+          >
             <ShoppingCartOutlinedIcon />
           </IconButton>
-          <IconButton sx={{ backgroundColor: "#E5E0FC", color: "#7E33E0" }}>
+          <IconButton
+            sx={{
+              backgroundColor: "transparent",
+              color: "#7E33E0",
+              "&:hover": {
+                backgroundColor: "#E5E0FC",
+              },
+            }}
+          >
             <FavoriteBorderOutlinedIcon />
           </IconButton>
-          <IconButton sx={{ backgroundColor: "#E5E0FC", color: "#7E33E0" }}>
+          <IconButton
+            sx={{
+              backgroundColor: "transparent",
+              color: "#7E33E0",
+              "&:hover": {
+                backgroundColor: "#E5E0FC",
+              },
+            }}
+          >
             <ZoomInOutlinedIcon />
           </IconButton>
         </div>
@@ -46,7 +71,9 @@ function FeaturedProductsCard({ product }) {
             }}
             variant="contained"
           >
-            View Details
+            <Link to={`/products/${product.id}`} state={{ product }}>
+              View Details
+            </Link>
           </Button>
         </div>
         <img
