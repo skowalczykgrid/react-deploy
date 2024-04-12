@@ -16,10 +16,10 @@ function FeaturedSlider() {
     slidesToShow: 4,
     slidesToScroll: 4,
     arrows: false,
-    centerPadding: "300px",
+    // centerPadding: "300px",
   };
   return (
-    <div className=" w-[1312px]">
+    <div className=" w-[1312px]" id="secondSlider">
       <Slider {...settings}>
         {randomNumbers.map((randomNumber, index) => {
           return (
