@@ -7,9 +7,7 @@ import { Link } from "react-router-dom";
 
 function FeaturedProductsCard({ product }) {
   if (!product)
-    return (
-      <div className="] h-[368px] w-[304px] rounded-lg bg-[#F8F8FD]"></div>
-    );
+    return <div className=" h-[368px] w-[304px] rounded-lg bg-[#F8F8FD]"></div>;
 
   return (
     <article className="group z-10 mx-3 my-8 flex h-[368px] w-[304px] flex-col items-center gap-4  rounded-lg shadow-lg transition-all hover:translate-y-[-24px]">
@@ -85,7 +83,7 @@ function FeaturedProductsCard({ product }) {
       <h3 className="px-3 text-center text-base font-bold text-primary">
         {product.category}
       </h3>
-      <p className="text-sm font-light text-[#8A8FB9]">Code - {product.code}</p>
+      <p className="text-grey-3 text-sm font-light">Code - {product.code}</p>
       <p className="mt-[-8px] text-textPrimary">${product.price}</p>
     </article>
   );

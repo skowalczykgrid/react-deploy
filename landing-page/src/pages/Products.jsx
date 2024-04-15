@@ -9,7 +9,9 @@ function Products() {
     <ul>
       {products.slice(0, 10).map((product) => (
         <li key={product.id}>
-          <Link to={`${product.id}`}>{product.name}</Link>
+          <Link to={`/products/${product.id}`} state={{ product }}>
+            {product.name}
+          </Link>
         </li>
       ))}
     </ul>

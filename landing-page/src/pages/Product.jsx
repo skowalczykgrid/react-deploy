@@ -9,7 +9,6 @@ import DoneIcon from "@mui/icons-material/Done";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 
 function Product() {
@@ -30,7 +29,7 @@ function Product() {
           <img
             src={product.imageSet[0]}
             alt={product.name}
-            className="h-[136px] w-[192px] rounded-lg object-cover shadow-md"
+            className="h-[136px] w-[192px] min-w-[192px] rounded-lg object-cover shadow-md"
           />
           <img
             src={product.imageSet[1]}
@@ -117,6 +116,9 @@ function Product() {
                 marginRight: "72px",
                 textTransform: "none",
               },
+              ".Mui-selected": {
+                color: "#101750 !important",
+              },
             }}
           >
             <Tab label="Description" value="1" />
@@ -130,7 +132,7 @@ function Product() {
               <h5 className="text-[22px] font-bold text-textPrimary">
                 Varius tempor.
               </h5>
-              <p className="text-base font-light text-[#8A8FB9]">
+              <p className="text-grey-3 text-base font-light">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac
                 quam dolor. In dignissim lectus sed nisl tempor, ac porttitor
                 libero consectetur. Pellentesque diam dolor, tincidunt nec ante
@@ -152,7 +154,7 @@ function Product() {
                   return (
                     <li
                       key={index}
-                      className="flex gap-4 text-base font-light capitalize text-[#8A8FB9]"
+                      className="text-grey-3 flex gap-4 text-base font-light capitalize"
                     >
                       <DoneIcon />
                       {color}

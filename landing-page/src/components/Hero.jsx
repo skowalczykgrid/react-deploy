@@ -25,7 +25,7 @@ function Hero() {
         <h1 className="text-[52px] font-bold leading-[64px] text-textPrimary">
           New Trendy Collection Headphones
         </h1>
-        <p className="text-base font-light text-[#8A8FB9]">
+        <p className="text-grey-3 text-base font-light">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est
           adipiscing in phasellus non in justo.
         </p>
