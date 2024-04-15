@@ -49,7 +49,9 @@ function Product() {
         />
 
         <div className="ml-[112px] flex flex-col gap-2 pt-10">
-          <h3 className="text-[36px] font-bold text-textPrimary">Headphones</h3>
+          <h3 className="text-[36px] font-bold text-textPrimary">
+            {product.category}
+          </h3>
           <Rating
             name="simple-controlled"
             value={rating}

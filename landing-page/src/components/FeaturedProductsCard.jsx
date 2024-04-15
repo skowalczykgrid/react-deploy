@@ -37,17 +37,19 @@ function FeaturedProductsCard({ product }) {
           >
             <FavoriteBorderOutlinedIcon />
           </IconButton>
-          <IconButton
-            sx={{
-              backgroundColor: "transparent",
-              color: "#7E33E0",
-              "&:hover": {
-                backgroundColor: "#E5E0FC",
-              },
-            }}
-          >
-            <ZoomInOutlinedIcon />
-          </IconButton>
+          <Link to={`/products/${product.id}`} state={{ product }}>
+            <IconButton
+              sx={{
+                backgroundColor: "transparent",
+                color: "#7E33E0",
+                "&:hover": {
+                  backgroundColor: "#E5E0FC",
+                },
+              }}
+            >
+              <ZoomInOutlinedIcon />
+            </IconButton>
+          </Link>
         </div>
         <div className="opacity-0 transition-all group-hover:opacity-100">
           <Button
