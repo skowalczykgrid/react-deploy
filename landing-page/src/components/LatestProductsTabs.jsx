@@ -24,58 +24,54 @@ function LatestProductsTabs() {
     setTab(newTab);
   };
 
-  if (!products)
-    return <div className=" h-[368px] w-[304px] rounded-lg bg-[#F8F8FD]"></div>;
-
   return (
-    <div>
-      <TabContext value={tab}>
-        <Tabs
-          onChange={handleChange}
-          value={tab}
-          centered
-          sx={{
-            ".MuiTabs-flexContainer": {
-              gap: "28px",
-            },
-            ".MuiTabs-indicator": {
-              backgroundColor: "transparent",
-            },
-            ".MuiTab-root": {
-              fontWeight: 400,
-              color: "#101750",
-              fontSize: "18px",
-              textTransform: "none",
-            },
-            ".Mui-selected": {
-              color: "#FB2E86 !important",
-            },
-          }}
-        >
-          <Tab label="New Arrival" value="1" sx={{ textAlign: "center" }} />
-          <Tab label="Best Seller" value="2" />
-          <Tab label="Featured" value="3" />
-          <Tab label="Special Offer" value="4" />
-        </Tabs>
+    <TabContext value={tab}>
+      <Tabs
+        onChange={handleChange}
+        value={tab}
+        centered
+        sx={{
+          ".MuiTabs-flexContainer": {
+            gap: "28px",
+          },
+          ".MuiTabs-indicator": {
+            backgroundColor: "transparent",
+          },
+          ".MuiTab-root": {
+            fontWeight: 400,
+            color: "#101750",
+            fontSize: "18px",
+            textTransform: "none",
+          },
+          ".Mui-selected": {
+            color: "#FB2E86 !important",
+          },
+        }}
+      >
+        <Tab label="New Arrival" value="1" sx={{ textAlign: "center" }} />
+        <Tab label="Best Seller" value="2" />
+        <Tab label="Featured" value="3" />
+        <Tab label="Special Offer" value="4" />
+      </Tabs>
 
-        {["1", "2", "3", "4"].map((value, index) => {
-          return (
-            <TabPanel key={index} value={value}>
-              <div className="grid grid-cols-3 grid-rows-2 gap-8">
-                {randomNumbers.map((randomNumber, index) => {
-                  return (
-                    <LatestProductsCard
-                      key={index}
-                      product={products[randomNumber]}
-                    />
-                  );
-                })}
-              </div>
-            </TabPanel>
-          );
-        })}
+      {["1", "2", "3", "4"].map((value, index) => {
+        return (
+          <TabPanel key={index} value={value}>
+            <div className="grid grid-cols-3 grid-rows-2 gap-8">
+              {randomNumbers.map((randomNumber, index) => {
+                return (
+                  <LatestProductsCard
+                    key={index}
+                    product={products[randomNumber]}
+                  />
+                );
+              })}
+            </div>
+          </TabPanel>
+        );
+      })}
 
-        {/* <TabPanel value="1">
+      {/* <TabPanel value="1">
           <div className="grid grid-cols-3 grid-rows-2 gap-8">
             {randomNumbers.map((randomNumber, index) => {
               return (
@@ -123,8 +119,7 @@ function LatestProductsTabs() {
             })}
           </div>
         </TabPanel> */}
-      </TabContext>
-    </div>
+    </TabContext>
   );
 }
 
