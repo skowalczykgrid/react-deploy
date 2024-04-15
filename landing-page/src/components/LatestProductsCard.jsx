@@ -2,6 +2,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ZoomInOutlinedIcon from "@mui/icons-material/ZoomInOutlined";
 import IconButton from "@mui/material/IconButton";
+import { Link } from "react-router-dom";
 
 function LatestProductsCard({ product }) {
   if (!product)
@@ -19,7 +20,7 @@ function LatestProductsCard({ product }) {
     product.name.length > 30 ? `${product.name.slice(0, 30)}...` : product.name;
 
   return (
-    <article className="group flex h-[304px] w-[416px] flex-col gap-3">
+    <article className="group  flex h-[304px] w-[416px] flex-col gap-3 ">
       <div className="relative h-[272px] w-full">
         <div className="absolute bottom-0 m-2 flex flex-col space-y-2 opacity-0 transition-all group-hover:opacity-100">
           <IconButton
@@ -44,22 +45,24 @@ function LatestProductsCard({ product }) {
           >
             <FavoriteBorderOutlinedIcon />
           </IconButton>
-          <IconButton
-            sx={{
-              backgroundColor: "transparent",
-              color: "#7E33E0",
-              "&:hover": {
-                backgroundColor: "#E5E0FC",
-              },
-            }}
-          >
-            <ZoomInOutlinedIcon />
-          </IconButton>
+          <Link to={`/products/${product.id}`} state={{ product }}>
+            <IconButton
+              sx={{
+                backgroundColor: "transparent",
+                color: "#7E33E0",
+                "&:hover": {
+                  backgroundColor: "#E5E0FC",
+                },
+              }}
+            >
+              <ZoomInOutlinedIcon />
+            </IconButton>
+          </Link>
         </div>
         <img
           src={product.thumbnail}
           alt={product.name}
-          className="h-full w-full rounded-md object-cover"
+          className="h-full w-full rounded-md object-cover shadow-lg transition-all group-hover:shadow-xl"
         />
       </div>
 
@@ -68,11 +71,11 @@ function LatestProductsCard({ product }) {
           {truncatedName}
         </span>
 
-        <span className="self-end text-base font-light text-textPrimary">
+        <span className="self-center text-base font-light text-textPrimary">
           ${product.price}
         </span>
 
-        <span className="self-end text-[14px] font-light text-primary">
+        <span className="self-center text-[14px] font-light text-primary">
           ${product.wasPrice}
         </span>
       </div>

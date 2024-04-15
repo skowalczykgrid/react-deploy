@@ -7,10 +7,12 @@ import { Link } from "react-router-dom";
 
 function FeaturedProductsCard({ product }) {
   if (!product)
-    return <div className=" h-[368px] w-[304px] rounded-lg bg-[#F8F8FD]"></div>;
+    return (
+      <div className=" h-[368px] w-[304px] rounded-lg bg-[#F8F8FD] shadow-lg"></div>
+    );
 
   return (
-    <article className="group z-10 mx-3 my-8 flex h-[368px] w-[304px] flex-col items-center gap-4  rounded-lg shadow-lg transition-all hover:translate-y-[-24px]">
+    <article className="group z-10 mx-3 my-8 flex h-[368px] w-[304px] flex-col items-center gap-4  rounded-lg shadow-lg transition-all hover:translate-y-[-24px] hover:shadow-2xl">
       <div className="relative basis-[63%]">
         <div className="absolute m-2 space-x-2 opacity-0 transition-all group-hover:opacity-100">
           <IconButton
