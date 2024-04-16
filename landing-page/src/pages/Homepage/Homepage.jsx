@@ -4,6 +4,7 @@ import LatestProducts from "./LatestProducts/LatestProducts";
 import UniqueFeatures from "./UniqueFeatures/UniqueFeatures";
 import TrendingProducts from "./TrendingProducts/TrendingProducts";
 import DiscountItem from "./DiscountItem/DiscountItem";
+import TopCategories from "./TopCategories/TopCategories";
 
 function Homepage() {
   return (
@@ -14,6 +15,7 @@ function Homepage() {
       <UniqueFeatures />
       <TrendingProducts />
       <DiscountItem />
+      <TopCategories />
     </div>
   );
 }

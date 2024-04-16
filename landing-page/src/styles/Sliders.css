@@ -57,3 +57,24 @@
   background-color: #fb2e86;
   transform: translateX(-4px);
 }
+
+#thirdSlider .slick-dots {
+  display: flex !important;
+  justify-content: center;
+  gap: 0px;
+}
+
+#thirdSlider .slick-dots li button::before {
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid #fb2e86;
+  opacity: 1;
+  content: "";
+  height: 8px;
+  width: 8px;
+  transition: 0.2s;
+}
+
+#thirdSlider .slick-dots li.slick-active button::before {
+  background-color: #fb2e86;
+}

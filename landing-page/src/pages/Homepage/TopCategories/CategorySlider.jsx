@@ -1,12 +1,12 @@
-import Slider from "react-slick";
-import FeaturedProductsCard from "./FeaturedProductsCard";
 import { useContext } from "react";
+import Slider from "react-slick";
 import { AppContext } from "../../../App";
+import CategoryCard from "./CategoryCard";
 
-function FeaturedSlider() {
+function CategorySlider() {
   const { products } = useContext(AppContext);
 
-  const randomNumbers = Array.from({ length: 16 }, () =>
+  const randomNumbers = Array.from({ length: 12 }, () =>
     Math.floor(Math.random() * products.length),
   );
 
@@ -17,15 +17,15 @@ function FeaturedSlider() {
     slidesToScroll: 4,
     arrows: false,
   };
+
   return (
-    <div className=" w-[1312px]" id="secondSlider">
+    <div className=" w-[1312px]" id="thirdSlider">
       <Slider {...settings}>
         {randomNumbers.map((randomNumber, index) => {
           return (
-            <FeaturedProductsCard
-              key={index}
-              product={products[randomNumber]}
-            />
+            <CategoryCard key={index} product={products[randomNumber]}>
+              test
+            </CategoryCard>
           );
         })}
       </Slider>
@@ -33,4 +33,4 @@ function FeaturedSlider() {
   );
 }
 
-export default FeaturedSlider;
+export default CategorySlider;

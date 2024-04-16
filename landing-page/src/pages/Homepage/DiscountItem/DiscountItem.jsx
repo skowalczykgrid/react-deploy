@@ -4,10 +4,7 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
-import DoneIcon from "@mui/icons-material/Done";
-import Button from "@mui/material/Button";
-
-import headphones from "../../../assets/discount-item/headphones.png";
+import DiscountTabPanel from "./DiscountTabPanel";
 
 function DiscountItem() {
   const [tab, setTab] = useState("1");
@@ -48,188 +45,49 @@ function DiscountItem() {
         </Tabs>
 
         <TabPanel value="1">
-          <div className="flex items-center gap-[80px]">
-            <div className="flex max-w-[530px] flex-col gap-6">
-              <h3 className="text-[36px] font-bold text-textPrimary">
-                20% Discount Of All Products
-              </h3>
-              <h4 className="text-[22px] font-bold text-primary">
-                Headphones Compact
-              </h4>
-              <p className="text-grey-3 text-[18px] font-light">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget
-                feugiat habitasse nec, bibendum condimentum.
-              </p>
-
-              <ul className="grid grid-cols-2 grid-rows-2 gap-6">
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Material expose like metals
-                </li>
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Simple neutral colours.
-                </li>
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Clear lines and geomatric figures
-                </li>
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Material expose like metals
-                </li>
-              </ul>
-              <Button
-                sx={{
-                  color: "white",
-                  backgroundColor: "#FB2E86",
-                  textTransform: "capitalize",
-                  fontSize: "16px",
-                  fontWeight: "500",
-                  width: "max-content",
-                  padding: "16px 40px",
-                  borderRadius: "8px",
-                  border: "2px solid #FB2E86",
-                  height: "52px",
-
-                  "&:hover": {
-                    color: "black",
-
-                    border: "2px solid #FB2E86",
-                  },
-                }}
-              >
-                Shop Now
-              </Button>
-            </div>
-            <img
-              src={headphones}
-              alt="headphones"
-              className="h-[568px] w-[638px]"
-            />
-          </div>
+          <DiscountTabPanel
+            title="20% Discount Of All Products"
+            subtitle="Headphones Compact"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget
+                feugiat habitasse nec, bibendum condimentum."
+            listItems={[
+              "Material expose like metals",
+              "Simple neutral colours.",
+              "Clear lines and geomatric figures",
+              "Material expose like metals",
+            ]}
+            buttonText="Shop now"
+          />
         </TabPanel>
-
         <TabPanel value="2">
-          <div className="flex items-center gap-[80px]">
-            <div className="flex max-w-[530px] flex-col gap-6">
-              <h3 className="text-[36px] font-bold text-textPrimary">
-                45% Discount Of All Products
-              </h3>
-              <h4 className="text-[22px] font-bold text-primary">Laptops</h4>
-              <p className="text-grey-3 text-[18px] font-light">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget
-                feugiat habitasse nec, bibendum condimentum.
-              </p>
-
-              <ul className="grid grid-cols-2 grid-rows-2 gap-6">
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Epic laptop silver color
-                </li>
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Metal material
-                </li>
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Shape of good laptop niceee
-                </li>
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Screen very amazing
-                </li>
-              </ul>
-              <Button
-                sx={{
-                  color: "white",
-                  backgroundColor: "#FB2E86",
-                  textTransform: "capitalize",
-                  fontSize: "16px",
-                  fontWeight: "500",
-                  width: "max-content",
-                  padding: "16px 40px",
-                  borderRadius: "8px",
-                  border: "2px solid #FB2E86",
-                  height: "52px",
-
-                  "&:hover": {
-                    color: "black",
-
-                    border: "2px solid #FB2E86",
-                  },
-                }}
-              >
-                Shop Now
-              </Button>
-            </div>
-            <img
-              src={headphones}
-              alt="headphones"
-              className="h-[568px] w-[638px]"
-            />
-          </div>
+          <DiscountTabPanel
+            title="40% Discount Of All Products"
+            subtitle="Laptop Compact"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget
+                feugiat habitasse nec, bibendum condimentum."
+            listItems={[
+              "Epic laptop silver color",
+              "Metal material",
+              "Shape of good laptop niceee",
+              "Screen very amazing",
+            ]}
+            buttonText="Shop now"
+          />
         </TabPanel>
-
         <TabPanel value="3">
-          <div className="flex items-center gap-[80px]">
-            <div className="flex max-w-[530px] flex-col gap-6">
-              <h3 className="text-[36px] font-bold text-textPrimary">
-                10% Discount on All Products
-              </h3>
-              <h4 className="text-[22px] font-bold text-primary">Other</h4>
-              <p className="text-grey-3 text-[18px] font-light">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget
-                feugiat habitasse nec, bibendum condimentum.
-              </p>
-
-              <ul className="grid grid-cols-2 grid-rows-2 gap-6">
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Buy everything you want
-                </li>
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Simple neutral colours.
-                </li>
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Clear lines and geomatric figures
-                </li>
-                <li className="text-grey-3 flex gap-4 text-base font-light capitalize">
-                  <DoneIcon />
-                  Made from good material and wood
-                </li>
-              </ul>
-              <Button
-                sx={{
-                  color: "white",
-                  backgroundColor: "#FB2E86",
-                  textTransform: "capitalize",
-                  fontSize: "16px",
-                  fontWeight: "500",
-                  width: "max-content",
-                  padding: "16px 40px",
-                  borderRadius: "8px",
-                  border: "2px solid #FB2E86",
-                  height: "52px",
-
-                  "&:hover": {
-                    color: "black",
-
-                    border: "2px solid #FB2E86",
-                  },
-                }}
-              >
-                Shop Now
-              </Button>
-            </div>
-            <img
-              src={headphones}
-              alt="headphones"
-              className="h-[568px] w-[638px]"
-            />
-          </div>
+          <DiscountTabPanel
+            title="10% Discount Of All Products"
+            subtitle="Other"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget
+                feugiat habitasse nec, bibendum condimentum."
+            listItems={[
+              "Buy everything you want",
+              "Simple neutral colours.",
+              "Clear lines and geomatric figures",
+              "Made from good material and wood",
+            ]}
+            buttonText="Shop now"
+          />
         </TabPanel>
       </TabContext>
     </section>

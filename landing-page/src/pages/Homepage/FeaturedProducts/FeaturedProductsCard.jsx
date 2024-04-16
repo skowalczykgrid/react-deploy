@@ -2,8 +2,8 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ZoomInOutlinedIcon from "@mui/icons-material/ZoomInOutlined";
 import IconButton from "@mui/material/IconButton";
-import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import ButtonGreen from "../../../components/ButtonGreen";
 
 function FeaturedProductsCard({ product }) {
   if (!product)
@@ -52,31 +52,11 @@ function FeaturedProductsCard({ product }) {
           </Link>
         </div>
         <div className="opacity-0 transition-all group-hover:opacity-100">
-          <Button
-            sx={{
-              position: "absolute",
-              backgroundColor: "#0CC562",
-              color: "white",
-              bottom: "5px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "101px",
-              height: "36px",
-              padding: "11px 16px",
-              borderRadius: "6px",
-              fontSize: "12px",
-              lineHeight: "14px",
-              textTransform: "none",
-              "&:hover": {
-                backgroundColor: "#7E33E0",
-              },
-            }}
-            variant="contained"
-          >
+          <ButtonGreen>
             <Link to={`/products/${product.id}`} state={{ product }}>
               View Details
             </Link>
-          </Button>
+          </ButtonGreen>
         </div>
         <img
           src={product.thumbnail}
