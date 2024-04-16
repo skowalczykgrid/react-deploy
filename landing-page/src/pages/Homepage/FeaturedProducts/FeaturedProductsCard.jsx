@@ -64,7 +64,7 @@ function FeaturedProductsCard({ product }) {
           className="h-full rounded-lg object-cover"
         />
       </div>
-      <h3 className="px-3 text-center text-base font-bold text-primary">
+      <h3 className="no-drag px-3 text-center text-base font-bold text-primary">
         {product.category}
       </h3>
       <p className="text-grey-3 text-sm font-light">Code - {product.code}</p>
