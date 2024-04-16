@@ -1,6 +1,6 @@
-import Logo from "./Logo";
+import Logo from "../../../components/Logo";
 import Navigation from "./Navigation";
-import SearchBar from "./Searchbar";
+import SearchBar from "../../../components/Searchbar";
 
 function HeaderMain() {
   return (

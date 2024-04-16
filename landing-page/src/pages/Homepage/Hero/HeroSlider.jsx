@@ -1,7 +1,7 @@
 import Slider from "react-slick";
-import headphones from "../assets/hero-section/headphones.png";
-import discount from "../assets/hero-section/Discount.png";
-import "../styles/Sliders.css";
+import headphones from "../../../assets/hero-section/headphones.png";
+import discount from "../../../assets/hero-section/Discount.png";
+import "../../../styles/Sliders.css";
 
 function HeroSlider() {
   const settings = {

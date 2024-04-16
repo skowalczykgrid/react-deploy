@@ -3,7 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import { useContext, useState } from "react";
-import { AppContext } from "../App";
+import { AppContext } from "../../../App";
 import LatestProductsCard from "./LatestProductsCard";
 
 // const randomNumbers = Array.from({ length: 6 }, () =>
@@ -70,55 +70,6 @@ function LatestProductsTabs() {
           </TabPanel>
         );
       })}
-
-      {/* <TabPanel value="1">
-          <div className="grid grid-cols-3 grid-rows-2 gap-8">
-            {randomNumbers.map((randomNumber, index) => {
-              return (
-                <LatestProductsCard
-                  key={index}
-                  product={products[randomNumber]}
-                />
-              );
-            })}
-          </div>
-        </TabPanel>
-        <TabPanel value="2">
-          <div className="grid grid-cols-3 grid-rows-2 gap-8">
-            {randomNumbers.map((randomNumber, index) => {
-              return (
-                <LatestProductsCard
-                  key={index}
-                  product={products[randomNumber]}
-                />
-              );
-            })}
-          </div>
-        </TabPanel>
-        <TabPanel value="3">
-          <div className="grid grid-cols-3 grid-rows-2 gap-8">
-            {randomNumbers.map((randomNumber, index) => {
-              return (
-                <LatestProductsCard
-                  key={index}
-                  product={products[randomNumber]}
-                />
-              );
-            })}
-          </div>
-        </TabPanel>
-        <TabPanel value="4">
-          <div className="grid grid-cols-3 grid-rows-2 gap-8">
-            {randomNumbers.map((randomNumber, index) => {
-              return (
-                <LatestProductsCard
-                  key={index}
-                  product={products[randomNumber]}
-                />
-              );
-            })}
-          </div>
-        </TabPanel> */}
     </TabContext>
   );
 }

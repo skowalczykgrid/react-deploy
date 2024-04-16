@@ -1,9 +1,8 @@
-import facebookLogo from "../assets/social-media/fb.svg";
-import twitterLogo from "../assets/social-media/twitter.svg";
-import instagramLogo from "../assets/social-media/instagram.svg";
-import Logo from "./Logo";
-import SearchBar from "./Searchbar";
-import EmailInput from "./EmailInput";
+import facebookLogo from "../../../assets/social-media/fb.svg";
+import twitterLogo from "../../../assets/social-media/twitter.svg";
+import instagramLogo from "../../../assets/social-media/instagram.svg";
+import Logo from "../../../components/Logo";
+import EmailInput from "../../../components/EmailInput";
 
 function Footer() {
   return (
@@ -17,7 +16,7 @@ function Footer() {
           </p>
         </div>
         <div>
-          <h2 className="text-textPrimary mb-6 text-xl font-bold">
+          <h2 className="mb-6 text-xl font-bold text-textPrimary">
             Categories
           </h2>
           <ul className="w-max space-y-6">
@@ -39,7 +38,7 @@ function Footer() {
           </ul>
         </div>
         <div>
-          <h2 className="text-textPrimary mb-6 w-max text-xl font-bold">
+          <h2 className="mb-6 w-max text-xl font-bold text-textPrimary">
             Customer Care
           </h2>
           <ul className="w-max space-y-6">
@@ -55,7 +54,7 @@ function Footer() {
           </ul>
         </div>
         <div>
-          <h2 className="text-textPrimary mb-6 w-max text-xl font-bold">
+          <h2 className="mb-6 w-max text-xl font-bold text-textPrimary">
             Pages
           </h2>
           <ul className="w-max space-y-6">

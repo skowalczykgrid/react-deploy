@@ -8,11 +8,11 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { IconButton } from "@mui/material";
 
-import Dropdown from "./Dropdown";
+import Dropdown from "../../../components/Dropdown";
 
 function HeaderUpperBar() {
   return (
-    <div className="bg-tertiary flex h-12 items-center px-[304px] text-white">
+    <div className="flex h-12 items-center bg-tertiary px-[304px] text-white">
       <div className="mr-auto flex gap-12">
         <span className="gap flex items-center gap-2">
           <EmailOutlinedIcon fontSize="small" />

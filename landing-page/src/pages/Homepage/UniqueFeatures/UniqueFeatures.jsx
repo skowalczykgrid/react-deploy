@@ -1,4 +1,4 @@
-import armchair from "../assets/unique-features/armchair.png";
+import armchair from "../../../assets/unique-features/armchair.png";
 import Button from "@mui/material/Button";
 
 function UniqueFeatures() {

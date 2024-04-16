@@ -1,5 +1,5 @@
-import lamp from "../assets/hero-section/lamp.png";
-import pinkDot from "../assets/pink-dot.svg";
+import lamp from "../../../assets/hero-section/lamp.png";
+import pinkDot from "../../../assets/pink-dot.svg";
 import HeroSlider from "./HeroSlider";
 import Button from "@mui/material/Button";
 
