@@ -16,7 +16,7 @@ function CategoryCard({ product }) {
           className="h-full w-full rounded-full object-cover transition-all group-hover:-translate-y-2 group-hover:translate-x-2 group-hover:shadow-2xl"
         />
         <div className="opacity-0 transition-all group-hover:opacity-100">
-          <ButtonGreen style={{ bottom: "33px" }}>View Details</ButtonGreen>
+          <ButtonGreen style={{ bottom: "33px" }}>View Category</ButtonGreen>
         </div>
       </div>
       <h5 className="text-center text-[20px] font-bold text-textPrimary">

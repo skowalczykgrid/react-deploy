@@ -6,6 +6,7 @@ import TrendingProducts from "./TrendingProducts/TrendingProducts";
 import DiscountItem from "./DiscountItem/DiscountItem";
 import TopCategories from "./TopCategories/TopCategories";
 import Newsletter from "./Newsletter/Newsletter";
+import LatestBlog from "./LatestBlog/LatestBlog";
 
 function Homepage() {
   return (
@@ -18,6 +19,7 @@ function Homepage() {
       <DiscountItem />
       <TopCategories />
       <Newsletter />
+      <LatestBlog />
     </div>
   );
 }
