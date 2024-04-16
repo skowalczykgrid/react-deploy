@@ -5,6 +5,7 @@ import UniqueFeatures from "./UniqueFeatures/UniqueFeatures";
 import TrendingProducts from "./TrendingProducts/TrendingProducts";
 import DiscountItem from "./DiscountItem/DiscountItem";
 import TopCategories from "./TopCategories/TopCategories";
+import Newsletter from "./Newsletter/Newsletter";
 
 function Homepage() {
   return (
@@ -16,6 +17,7 @@ function Homepage() {
       <TrendingProducts />
       <DiscountItem />
       <TopCategories />
+      <Newsletter />
     </div>
   );
 }
