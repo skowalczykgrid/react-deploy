@@ -1,21 +1,22 @@
 import Slider from "react-slick";
 import FeaturedProductsCard from "./FeaturedProductsCard";
-import { useContext, useMemo } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../../App";
-import generateRandomNumbers from "../../../utils/generateRandomNumbers";
 
-function FeaturedSlider() {
+// work in progress
+
+function CardSlider({ children, slidesToShow, slidesToScroll, card }) {
   const { products } = useContext(AppContext);
 
-  const randomNumbers = useMemo(() => {
-    return generateRandomNumbers(products.length, 16);
-  }, [products]);
+  const randomNumbers = Array.from({ length: 16 }, () =>
+    Math.floor(Math.random() * products.length),
+  );
 
   const settings = {
     dots: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow,
+    slidesToScroll,
     arrows: false,
   };
   return (
@@ -34,4 +35,4 @@ function FeaturedSlider() {
   );
 }
 
-export default FeaturedSlider;
+export default CardSlider;

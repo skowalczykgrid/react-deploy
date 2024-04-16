@@ -2,13 +2,10 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { AppContext } from "../../../App";
 import LatestProductsCard from "./LatestProductsCard";
-
-// const randomNumbers = Array.from({ length: 6 }, () =>
-//   Math.floor(Math.random() * 145),
-// );
+import generateRandomNumbers from "../../../utils/generateRandomNumbers";
 
 //flashing component :(
 function LatestProductsTabs() {
@@ -16,9 +13,9 @@ function LatestProductsTabs() {
 
   const { products } = useContext(AppContext);
 
-  const randomNumbers = Array.from({ length: 6 }, () =>
-    Math.floor(Math.random() * products.length),
-  );
+  const randomNumbers = useMemo(() => {
+    return generateRandomNumbers(products.length, 6);
+  }, [products]);
 
   const handleChange = (event, newTab) => {
     setTab(newTab);

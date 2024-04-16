@@ -1,8 +1,6 @@
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import ZoomInOutlinedIcon from "@mui/icons-material/ZoomInOutlined";
-import IconButton from "@mui/material/IconButton";
-import { Link } from "react-router-dom";
+import WishlistIcon from "../../../components/Icons/WishlistIcon";
+import GoToProduct from "../../../components/Icons/GoToProduct";
+import AddToCart from "../../../components/Icons/AddToCart";
 
 function LatestProductsCard({ product }) {
   if (!product)
@@ -23,41 +21,13 @@ function LatestProductsCard({ product }) {
     <article className="group  flex h-[304px] w-[416px] flex-col gap-3 ">
       <div className="relative h-[272px] w-full">
         <div className="absolute bottom-0 m-2 flex flex-col space-y-2 opacity-0 transition-all group-hover:opacity-100">
-          <IconButton
-            sx={{
-              backgroundColor: "transparent",
-              color: "#7E33E0",
-              "&:hover": {
-                backgroundColor: "#E5E0FC",
-              },
-            }}
-          >
-            <ShoppingCartOutlinedIcon />
-          </IconButton>
-          <IconButton
-            sx={{
-              backgroundColor: "transparent",
-              color: "#7E33E0",
-              "&:hover": {
-                backgroundColor: "#E5E0FC",
-              },
-            }}
-          >
-            <FavoriteBorderOutlinedIcon />
-          </IconButton>
-          <Link to={`/products/${product.id}`} state={{ product }}>
-            <IconButton
-              sx={{
-                backgroundColor: "transparent",
-                color: "#7E33E0",
-                "&:hover": {
-                  backgroundColor: "#E5E0FC",
-                },
-              }}
-            >
-              <ZoomInOutlinedIcon />
-            </IconButton>
-          </Link>
+          <AddToCart color="#7E33E0" hoverBgColor="#E5E0FC" product={product} />
+          <WishlistIcon color="#7E33E0" hoverBgColor="#E5E0FC" />
+          <GoToProduct
+            product={product}
+            color="#7E33E0"
+            hoverBgColor="#E5E0FC"
+          />
         </div>
         <img
           src={product.thumbnail}

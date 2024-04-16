@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { IconButton } from "@mui/material";
 
 import Dropdown from "../../../components/Dropdown";
+import { Link } from "react-router-dom";
 
 function HeaderUpperBar() {
   return (
@@ -49,9 +50,11 @@ function HeaderUpperBar() {
         >
           Wishlist
         </Button>
-        <IconButton>
-          <ShoppingCartOutlinedIcon sx={{ color: "white" }} />
-        </IconButton>
+        <Link to="/cart">
+          <IconButton>
+            <ShoppingCartOutlinedIcon sx={{ color: "white" }} />
+          </IconButton>
+        </Link>
       </div>
     </div>
   );

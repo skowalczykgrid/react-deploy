@@ -1,9 +1,8 @@
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import ZoomInOutlinedIcon from "@mui/icons-material/ZoomInOutlined";
-import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
 import ButtonGreen from "../../../components/ButtonGreen";
+import AddToCart from "../../../components/Icons/AddToCart";
+import WishlistIcon from "../../../components/Icons/WishlistIcon";
+import GoToProduct from "../../../components/Icons/GoToProduct";
 
 function FeaturedProductsCard({ product }) {
   if (!product)
@@ -15,41 +14,13 @@ function FeaturedProductsCard({ product }) {
     <article className="group z-10 mx-3 my-8 flex h-[368px] w-[304px] flex-col items-center gap-4  rounded-lg shadow-lg transition-all hover:translate-y-[-24px] hover:shadow-2xl">
       <div className="relative basis-[63%]">
         <div className="absolute m-2 space-x-2 opacity-0 transition-all group-hover:opacity-100">
-          <IconButton
-            sx={{
-              backgroundColor: "transparent",
-              color: "#7E33E0",
-              "&:hover": {
-                backgroundColor: "#E5E0FC",
-              },
-            }}
-          >
-            <ShoppingCartOutlinedIcon />
-          </IconButton>
-          <IconButton
-            sx={{
-              backgroundColor: "transparent",
-              color: "#7E33E0",
-              "&:hover": {
-                backgroundColor: "#E5E0FC",
-              },
-            }}
-          >
-            <FavoriteBorderOutlinedIcon />
-          </IconButton>
-          <Link to={`/products/${product.id}`} state={{ product }}>
-            <IconButton
-              sx={{
-                backgroundColor: "transparent",
-                color: "#7E33E0",
-                "&:hover": {
-                  backgroundColor: "#E5E0FC",
-                },
-              }}
-            >
-              <ZoomInOutlinedIcon />
-            </IconButton>
-          </Link>
+          <AddToCart color="#7E33E0" hoverBgColor="#E5E0FC" product={product} />
+          <WishlistIcon color="#7E33E0" hoverBgColor="#E5E0FC" />
+          <GoToProduct
+            product={product}
+            color="#7E33E0"
+            hoverBgColor="#E5E0FC"
+          />
         </div>
         <div className="opacity-0 transition-all group-hover:opacity-100">
           <ButtonGreen>
