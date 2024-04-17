@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { AppContext } from "../../App";
@@ -11,6 +11,10 @@ function Product() {
 
   const { state } = useLocation();
   const product = state.product;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <main>

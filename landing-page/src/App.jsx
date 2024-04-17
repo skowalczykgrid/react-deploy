@@ -5,7 +5,6 @@ import Products from "./pages/Products";
 import Product from "./pages/Product/Product";
 import Cart from "./pages/Cart/Cart";
 import PageNotFound from "./pages/PageNotFound";
-import { Snackbar, Alert } from "@mui/material";
 
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
