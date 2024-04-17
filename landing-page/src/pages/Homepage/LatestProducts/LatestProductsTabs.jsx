@@ -5,7 +5,6 @@ import TabPanel from "@mui/lab/TabPanel";
 import { useContext, useMemo, useState } from "react";
 import { AppContext } from "../../../App";
 import LatestProductsCard from "./LatestProductsCard";
-import generateRandomNumbers from "../../../utils/generateRandomNumbers";
 
 //flashing component :(
 function LatestProductsTabs() {
@@ -13,8 +12,38 @@ function LatestProductsTabs() {
 
   const { products } = useContext(AppContext);
 
-  const randomNumbers = useMemo(() => {
-    return generateRandomNumbers(products.length, 6);
+  const newArrivals = useMemo(
+    () =>
+      products.filter((product) => {
+        const date = new Date(product.createdAt);
+        return date >= new Date("2023-05-01");
+      }),
+    [products],
+  );
+
+  const randomNewArrivals = useMemo(() => {
+    return newArrivals.sort(() => 0.5 - Math.random()).slice(0, 6);
+  }, [newArrivals]);
+
+  const bestSellers = useMemo(() => {
+    return products
+      .slice()
+      .sort((a, b) => b.soldTimes - a.soldTimes)
+      .slice(0, 6);
+  }, [products]);
+
+  const featuredProducts = useMemo(() => {
+    const featured = products.filter((product) => product.isFeatured);
+
+    return featured.sort(() => 0.5 - Math.random()).slice(0, 6);
+  }, [products]);
+
+  const specialOffers = useMemo(() => {
+    const isSpecialOffer = products.filter(
+      (product) => product.specialOffer !== null,
+    );
+
+    return isSpecialOffer.sort(() => 0.5 - Math.random()).slice(0, 6);
   }, [products]);
 
   const handleChange = (event, newTab) => {
@@ -51,22 +80,34 @@ function LatestProductsTabs() {
         <Tab label="Special Offer" value="4" />
       </Tabs>
 
-      {["1", "2", "3", "4"].map((value, index) => {
-        return (
-          <TabPanel key={index} value={value}>
-            <div className="grid grid-cols-3 grid-rows-2 gap-8">
-              {randomNumbers.map((randomNumber, index) => {
-                return (
-                  <LatestProductsCard
-                    key={index}
-                    product={products[randomNumber]}
-                  />
-                );
-              })}
-            </div>
-          </TabPanel>
-        );
-      })}
+      <TabPanel value="1">
+        <div className="grid grid-cols-3 grid-rows-2 gap-8">
+          {randomNewArrivals.map((product, index) => {
+            return <LatestProductsCard key={index} product={product} />;
+          })}
+        </div>
+      </TabPanel>
+      <TabPanel value="2">
+        <div className="grid grid-cols-3 grid-rows-2 gap-8">
+          {bestSellers.map((product, index) => {
+            return <LatestProductsCard key={index} product={product} />;
+          })}
+        </div>
+      </TabPanel>
+      <TabPanel value="3">
+        <div className="grid grid-cols-3 grid-rows-2 gap-8">
+          {featuredProducts.map((product, index) => {
+            return <LatestProductsCard key={index} product={product} />;
+          })}
+        </div>
+      </TabPanel>
+      <TabPanel value="4">
+        <div className="grid grid-cols-3 grid-rows-2 gap-8">
+          {specialOffers.map((product, index) => {
+            return <LatestProductsCard key={index} product={product} />;
+          })}
+        </div>
+      </TabPanel>
     </TabContext>
   );
 }
