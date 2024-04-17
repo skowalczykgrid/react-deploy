@@ -2,12 +2,11 @@ import Rating from "@mui/material/Rating";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import ButtonBlackBorder from "../../components/ButtonBlackBorder";
 import { AppContext } from "../../App";
 
 function ProductRight({ product }) {
-  const [rating, setRating] = useState(0);
   const {
     addToCart,
     enqueueSnackbar,
@@ -45,11 +44,10 @@ function ProductRight({ product }) {
         {product.category}
       </h3>
       <Rating
-        name="simple-controlled"
-        value={rating}
-        onChange={(event, newRating) => {
-          setRating(newRating);
-        }}
+        name="read-only"
+        value={product.rating.value}
+        precision={0.1}
+        readOnly
       />
       <div className="my-4 space-x-4">
         <span className=" text-base font-light text-textPrimary">
