@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://your-external-api.com/:path*"
+      "destination": "https://vercel-api-one-gamma.vercel.app/:path*"
     }
   ]
 }
