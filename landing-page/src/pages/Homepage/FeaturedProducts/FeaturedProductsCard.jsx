@@ -7,7 +7,7 @@ import GoToProduct from "../../../components/Icons/GoToProduct";
 function FeaturedProductsCard({ product }) {
   if (!product)
     return (
-      <div className=" h-[368px] w-[304px] rounded-lg bg-[#F8F8FD] shadow-lg"></div>
+      <div className=" mx-3 my-8 h-[368px] w-[304px] rounded-lg bg-[#F8F8FD] shadow-lg"></div>
     );
 
   return (

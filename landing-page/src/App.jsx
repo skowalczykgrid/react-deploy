@@ -12,6 +12,8 @@ import { createContext, useEffect, useState } from "react";
 
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 
+const API_URL = "https://vercel-api-one-gamma.vercel.app/";
+
 const theme = createTheme({
   typography: {
     fontFamily: "Josefin Sans",
@@ -72,16 +74,14 @@ function App() {
 
   const addToWishlist = (productToAdd) => {
     setWishlist((prevWishlist) => {
-      // Check if the product is already in the wishlist
       const isProductInWishlist = prevWishlist.some(
         (item) => item.id === productToAdd.id,
       );
 
       if (!isProductInWishlist) {
-        // Product is not in wishlist, add it
         return [...prevWishlist, productToAdd];
       }
-      // If product is already in the wishlist, return the existing list without adding
+
       return prevWishlist;
     });
   };
@@ -94,7 +94,8 @@ function App() {
 
   useEffect(() => {
     async function fetchProducts() {
-      const response = await fetch("http://localhost:5000/products");
+      // const response = await fetch("http://localhost:5000/products");
+      const response = await fetch(`api/products`);
       const data = await response.json();
       setProducts(data);
     }
