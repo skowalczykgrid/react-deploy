@@ -7,19 +7,42 @@ import DiscountItem from "./DiscountItem/DiscountItem";
 import TopCategories from "./TopCategories/TopCategories";
 import Newsletter from "./Newsletter/Newsletter";
 import LatestBlog from "./LatestBlog/LatestBlog";
+import ScrollRevealSection from "../../components/ScrollRevealSection";
 
 function Homepage() {
   return (
     <div>
       <Hero />
+
       <FeaturedProducts />
-      <LatestProducts />
-      <UniqueFeatures />
-      <TrendingProducts />
-      <DiscountItem />
-      <TopCategories />
-      <Newsletter />
-      <LatestBlog />
+
+      <ScrollRevealSection>
+        <LatestProducts />
+      </ScrollRevealSection>
+
+      <ScrollRevealSection>
+        <UniqueFeatures />
+      </ScrollRevealSection>
+
+      <ScrollRevealSection>
+        <TrendingProducts />
+      </ScrollRevealSection>
+
+      <ScrollRevealSection>
+        <DiscountItem />
+      </ScrollRevealSection>
+
+      <ScrollRevealSection>
+        <TopCategories />
+      </ScrollRevealSection>
+
+      <ScrollRevealSection>
+        <Newsletter />
+      </ScrollRevealSection>
+
+      <ScrollRevealSection>
+        <LatestBlog />
+      </ScrollRevealSection>
     </div>
   );
 }
