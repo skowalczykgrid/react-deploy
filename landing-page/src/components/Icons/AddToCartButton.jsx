@@ -2,15 +2,13 @@ import { IconButton } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AppContext } from "../../App";
 import { useContext } from "react";
-import Alert from "@mui/material/Alert";
-import CheckIcon from "@mui/icons-material/Check";
 
-function AddToCart({ color, hoverBgColor, product }) {
-  const { addToCart, handleSnackbarOpen } = useContext(AppContext);
+function AddToCartButton({ color, hoverBgColor, product }) {
+  const { addToCart, enqueueSnackbar } = useContext(AppContext);
 
   const handleAddToCart = () => {
     addToCart(product);
-    handleSnackbarOpen("Item added to cart");
+    enqueueSnackbar("Product added to cart", { variant: "success" });
   };
 
   return (
@@ -29,6 +27,6 @@ function AddToCart({ color, hoverBgColor, product }) {
   );
 }
 
-export default AddToCart;
+export default AddToCartButton;
 
 //ALERT SNACKBAR TODO

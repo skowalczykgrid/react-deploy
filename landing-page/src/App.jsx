@@ -11,6 +11,8 @@ import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
 import { createContext, useEffect, useState } from "react";
 
+import { SnackbarProvider, enqueueSnackbar } from "notistack";
+
 const theme = createTheme({
   typography: {
     fontFamily: "Josefin Sans",
@@ -24,22 +26,6 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
-  const [snackbars, setSnackbars] = useState([]);
-
-  const handleSnackbarOpen = (message) => {
-    const newSnackbar = {
-      key: new Date().getTime(),
-      message: message,
-    };
-    setSnackbars((prevSnackbars) => [...prevSnackbars, newSnackbar]);
-  };
-
-  const handleSnackbarClose = (key) => {
-    setSnackbars((prevSnackbars) =>
-      prevSnackbars.filter((snackbar) => snackbar.key !== key),
-    );
-  };
 
   function addToCart(productToAdd) {
     setCart((prevCart) => {
@@ -83,6 +69,30 @@ function App() {
     });
   }
 
+  const [wishlist, setWishlist] = useState([]);
+
+  const addToWishlist = (productToAdd) => {
+    setWishlist((prevWishlist) => {
+      // Check if the product is already in the wishlist
+      const isProductInWishlist = prevWishlist.some(
+        (item) => item.id === productToAdd.id,
+      );
+
+      if (!isProductInWishlist) {
+        // Product is not in wishlist, add it
+        return [...prevWishlist, productToAdd];
+      }
+      // If product is already in the wishlist, return the existing list without adding
+      return prevWishlist;
+    });
+  };
+
+  const removeFromWishlist = (productId) => {
+    setWishlist((prevWishlist) =>
+      prevWishlist.filter((item) => item.id !== productId),
+    );
+  };
+
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch("http://localhost:5000/products");
@@ -102,7 +112,10 @@ function App() {
         removeFromCart,
         updateQuantity,
         total,
-        handleSnackbarOpen,
+        enqueueSnackbar,
+        addToWishlist,
+        removeFromWishlist,
+        wishlist,
       }}
     >
       <ThemeProvider theme={theme}>
@@ -116,19 +129,12 @@ function App() {
               <Route path="*" element={<PageNotFound />} />
             </Route>
           </Routes>
-          {snackbars.map((snackbar) => (
-            <Snackbar
-              key={snackbar.key}
-              open={true}
-              autoHideDuration={6000}
-              onClose={() => handleSnackbarClose(snackbar.key)}
-              anchorOrigin={{ vertical: "top", horizontal: "center" }}
-            >
-              <Alert severity="success" sx={{ width: "100%" }}>
-                {snackbar.message}
-              </Alert>
-            </Snackbar>
-          ))}
+
+          <SnackbarProvider
+            autoHideDuration={3000}
+
+            // anchorOrigin={{ horizontal: "center", vertical: "top" }}
+          />
         </BrowserRouter>
       </ThemeProvider>
     </AppContext.Provider>

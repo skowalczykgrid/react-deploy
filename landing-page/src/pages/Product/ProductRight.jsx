@@ -1,5 +1,6 @@
 import Rating from "@mui/material/Rating";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import { useContext, useState } from "react";
 import ButtonBlackBorder from "../../components/ButtonBlackBorder";
@@ -7,7 +8,36 @@ import { AppContext } from "../../App";
 
 function ProductRight({ product }) {
   const [rating, setRating] = useState(0);
-  const { addToCart } = useContext(AppContext);
+  const {
+    addToCart,
+    enqueueSnackbar,
+    addToWishlist,
+    removeFromWishlist,
+    wishlist,
+  } = useContext(AppContext);
+
+  const isInWishlist = wishlist.some((item) => item.id === product.id);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    enqueueSnackbar("Product added to cart", { variant: "success" });
+  };
+
+  const handleAddToWishlist = () => {
+    if (!isInWishlist) {
+      addToWishlist(product);
+      enqueueSnackbar("Product added to Wishlist", {
+        variant: "success",
+        style: { backgroundColor: "#FB2E86" },
+      });
+    } else {
+      removeFromWishlist(product.id);
+      enqueueSnackbar("Product removed from wishlist", {
+        variant: "success",
+        style: { backgroundColor: "#FB2E70" },
+      });
+    }
+  };
 
   return (
     <div className="ml-[112px] flex flex-col gap-2 pt-10">
@@ -33,16 +63,17 @@ function ProductRight({ product }) {
         {product.description}
       </p>
       <div className="mt-[56px] space-x-[72px]">
-        <ButtonBlackBorder onClick={() => addToCart(product)}>
+        <ButtonBlackBorder onClick={handleAddToCart}>
           Add To Cart
         </ButtonBlackBorder>
         <IconButton
           sx={{
             backgroundColor: "transparent",
-            color: "#101750",
+            color: isInWishlist ? "#FB2E86" : "#101750",
           }}
+          onClick={handleAddToWishlist}
         >
-          <FavoriteBorderOutlinedIcon />
+          {isInWishlist ? <FavoriteIcon /> : <FavoriteBorderOutlinedIcon />}
         </IconButton>
       </div>
     </div>

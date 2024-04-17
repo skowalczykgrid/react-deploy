@@ -1,6 +1,6 @@
 import WishlistIcon from "../../../components/Icons/WishlistIcon";
 import GoToProduct from "../../../components/Icons/GoToProduct";
-import AddToCart from "../../../components/Icons/AddToCart";
+import AddToCart from "../../../components/Icons/AddToCartButton";
 
 function LatestProductsCard({ product }) {
   if (!product)
@@ -22,7 +22,11 @@ function LatestProductsCard({ product }) {
       <div className="relative h-[272px] w-full">
         <div className="absolute bottom-0 m-2 flex flex-col space-y-2 opacity-0 transition-all group-hover:opacity-100">
           <AddToCart color="#7E33E0" hoverBgColor="#E5E0FC" product={product} />
-          <WishlistIcon color="#7E33E0" hoverBgColor="#E5E0FC" />
+          <WishlistIcon
+            color="#7E33E0"
+            hoverBgColor="#E5E0FC"
+            product={product}
+          />
           <GoToProduct
             product={product}
             color="#7E33E0"

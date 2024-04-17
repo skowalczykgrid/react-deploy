@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import ButtonGreen from "../../../components/ButtonGreen";
-import AddToCart from "../../../components/Icons/AddToCart";
+import AddToCart from "../../../components/Icons/AddToCartButton";
 import WishlistIcon from "../../../components/Icons/WishlistIcon";
 import GoToProduct from "../../../components/Icons/GoToProduct";
 
@@ -15,7 +15,11 @@ function FeaturedProductsCard({ product }) {
       <div className="relative basis-[63%]">
         <div className="absolute m-2 space-x-2 opacity-0 transition-all group-hover:opacity-100">
           <AddToCart color="#7E33E0" hoverBgColor="#E5E0FC" product={product} />
-          <WishlistIcon color="#7E33E0" hoverBgColor="#E5E0FC" />
+          <WishlistIcon
+            color="#7E33E0"
+            hoverBgColor="#E5E0FC"
+            product={product}
+          />
           <GoToProduct
             product={product}
             color="#7E33E0"
