@@ -1,11 +1,14 @@
 import Rating from "@mui/material/Rating";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import IconButton from "@mui/material/IconButton";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ButtonBlackBorder from "../../components/ButtonBlackBorder";
+import { AppContext } from "../../App";
 
 function ProductRight({ product }) {
   const [rating, setRating] = useState(0);
+  const { addToCart } = useContext(AppContext);
+
   return (
     <div className="ml-[112px] flex flex-col gap-2 pt-10">
       <h3 className="text-[36px] font-bold text-textPrimary">
@@ -30,7 +33,9 @@ function ProductRight({ product }) {
         {product.description}
       </p>
       <div className="mt-[56px] space-x-[72px]">
-        <ButtonBlackBorder>Add To Cart</ButtonBlackBorder>
+        <ButtonBlackBorder onClick={() => addToCart(product)}>
+          Add To Cart
+        </ButtonBlackBorder>
         <IconButton
           sx={{
             backgroundColor: "transparent",

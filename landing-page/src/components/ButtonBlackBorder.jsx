@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 
-function ButtonBlackBorder({ children }) {
+function ButtonBlackBorder({ children, onClick }) {
   return (
     <Button
       sx={{
@@ -21,6 +21,7 @@ function ButtonBlackBorder({ children }) {
           border: "2px solid #FB2E86",
         },
       }}
+      onClick={onClick}
     >
       {children}
     </Button>

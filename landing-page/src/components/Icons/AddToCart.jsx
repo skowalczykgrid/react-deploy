@@ -6,7 +6,12 @@ import Alert from "@mui/material/Alert";
 import CheckIcon from "@mui/icons-material/Check";
 
 function AddToCart({ color, hoverBgColor, product }) {
-  const { addToCart } = useContext(AppContext);
+  const { addToCart, handleSnackbarOpen } = useContext(AppContext);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    handleSnackbarOpen("Item added to cart");
+  };
 
   return (
     <IconButton
@@ -17,7 +22,7 @@ function AddToCart({ color, hoverBgColor, product }) {
           backgroundColor: hoverBgColor,
         },
       }}
-      onClick={() => addToCart(product)}
+      onClick={handleAddToCart}
     >
       <ShoppingCartOutlinedIcon />
     </IconButton>

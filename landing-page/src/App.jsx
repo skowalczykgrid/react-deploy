@@ -5,6 +5,7 @@ import Products from "./pages/Products";
 import Product from "./pages/Product/Product";
 import Cart from "./pages/Cart/Cart";
 import PageNotFound from "./pages/PageNotFound";
+import { Snackbar, Alert } from "@mui/material";
 
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
@@ -23,6 +24,22 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+  const [snackbars, setSnackbars] = useState([]);
+
+  const handleSnackbarOpen = (message) => {
+    const newSnackbar = {
+      key: new Date().getTime(),
+      message: message,
+    };
+    setSnackbars((prevSnackbars) => [...prevSnackbars, newSnackbar]);
+  };
+
+  const handleSnackbarClose = (key) => {
+    setSnackbars((prevSnackbars) =>
+      prevSnackbars.filter((snackbar) => snackbar.key !== key),
+    );
+  };
 
   function addToCart(productToAdd) {
     setCart((prevCart) => {
@@ -85,6 +102,7 @@ function App() {
         removeFromCart,
         updateQuantity,
         total,
+        handleSnackbarOpen,
       }}
     >
       <ThemeProvider theme={theme}>
@@ -98,6 +116,19 @@ function App() {
               <Route path="*" element={<PageNotFound />} />
             </Route>
           </Routes>
+          {snackbars.map((snackbar) => (
+            <Snackbar
+              key={snackbar.key}
+              open={true}
+              autoHideDuration={6000}
+              onClose={() => handleSnackbarClose(snackbar.key)}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert severity="success" sx={{ width: "100%" }}>
+                {snackbar.message}
+              </Alert>
+            </Snackbar>
+          ))}
         </BrowserRouter>
       </ThemeProvider>
     </AppContext.Provider>
