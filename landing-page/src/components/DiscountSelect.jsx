@@ -1,10 +1,17 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import { AppContext } from "../App";
 
 function DiscountSelect({ discountOptions }) {
   const [selectedDiscounts, setSelectedDiscounts] = useState([]);
   const { setUserFilters } = useContext(AppContext);
+
+  useEffect(() => {
+    setUserFilters((oldFilters) => ({
+      ...oldFilters,
+      discountPercentage: selectedDiscounts,
+    }));
+  }, [setUserFilters, selectedDiscounts]);
 
   const handleCheckboxChange = (event) => {
     const value = event.target.value;

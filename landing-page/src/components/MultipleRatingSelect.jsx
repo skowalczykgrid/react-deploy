@@ -1,17 +1,12 @@
-import { useContext, useState } from "react";
-import {
-  Rating,
-  FormControlLabel,
-  Checkbox,
-  Box,
-  FormGroup,
-  Typography,
-} from "@mui/material";
+import { useContext, useEffect, useState } from "react";
+import { Rating, Checkbox, FormGroup } from "@mui/material";
 import { AppContext } from "../App";
 
 function MultipleRatingSelect({ ratings }) {
   const { setUserFilters } = useContext(AppContext);
   const [selectedRatings, setSelectedRatings] = useState([]);
+
+  console.log(selectedRatings);
 
   const handleRatingChange = (ratingValue) => {
     setSelectedRatings((prev) => {
@@ -21,12 +16,14 @@ function MultipleRatingSelect({ ratings }) {
         return [...prev, ratingValue];
       }
     });
-
-    // setUserFilters((oldFilters) => ({
-    //   ...oldFilters,
-    //   ratings: ratingValue,
-    // }));
   };
+
+  useEffect(() => {
+    setUserFilters((oldFilters) => ({
+      ...oldFilters,
+      rating: selectedRatings,
+    }));
+  }, [setUserFilters, selectedRatings]);
 
   return (
     <FormGroup>

@@ -26,10 +26,10 @@ function Products() {
         product.price <= userFilters.price[1] &&
         (userFilters.discountPercentage.length === 0 ||
           userFilters.discountPercentage.includes(
-            product.discountPercentage,
+            Math.round(product.discountPercentage / 10) * 10,
           )) &&
         (userFilters.rating.length === 0 ||
-          userFilters.rating.includes(product.rating)) &&
+          userFilters.rating.includes(Math.round(product.rating.value))) &&
         (userFilters.colors.length === 0 ||
           userFilters.colors.some((color) => product.colors.includes(color)))
       );
@@ -82,9 +82,9 @@ function Products() {
         </div>
       </div>
 
-      <div className="flex gap-12">
+      <div className="relative flex gap-12">
         <Filters />
-        <div className="flex flex-col">
+        <div className="flex min-w-[976px] flex-col">
           <div className="mb-8 flex gap-10 self-end">
             <PerPageControl
               handleChangeRowsPerPage={handleChangeRowsPerPage}

@@ -1,17 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import Products from "./pages/ProductsPage";
-import Product from "./pages/ProductPage";
-import Cart from "./pages/CartPage";
-import PageNotFound from "./pages/PageNotFound";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
-import { createContext, useEffect, useState } from "react";
+import { createContext, lazy, Suspense, useEffect, useState } from "react";
 
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import LoadingPage from "./pages/LoadingPage";
 
 const theme = createTheme({
   typography: {
@@ -19,21 +16,29 @@ const theme = createTheme({
   },
 });
 
+export const initialFilterState = {
+  brand: [],
+  category: [],
+  price: [0, 6500],
+  discountPercentage: [],
+  rating: [],
+  colors: [],
+};
+
 export const AppContext = createContext();
+
+const Homepage = lazy(() => import("./pages/Homepage"));
+const ProductsPage = lazy(() => import("./pages/ProductsPage"));
+const ProductPage = lazy(() => import("./pages/ProductPage"));
+const CartPage = lazy(() => import("./pages/CartPage"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [filters, setFilters] = useState({});
 
-  const [userFilters, setUserFilters] = useState({
-    brand: [],
-    category: [],
-    price: [0, 6500],
-    discountPercentage: [],
-    rating: [],
-    colors: [],
-  });
+  const [userFilters, setUserFilters] = useState(initialFilterState);
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -145,15 +150,15 @@ function App() {
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex flex-1 flex-col">
-              <Routes>
-                {/* <Route path="/" element={<AppLayout />}> */}
-                <Route index element={<Homepage />} />
-                <Route path="products" element={<Products />} />
-                <Route path="products/:id" element={<Product />} />
-                <Route path="cart" element={<Cart />} />
-                <Route path="*" element={<PageNotFound />} />
-                {/* </Route> */}
-              </Routes>
+              <Suspense fallback={<LoadingPage />}>
+                <Routes>
+                  <Route index element={<Homepage />} />
+                  <Route path="products" element={<ProductsPage />} />
+                  <Route path="products/:id" element={<ProductPage />} />
+                  <Route path="cart" element={<CartPage />} />
+                  <Route path="*" element={<PageNotFound />} />
+                </Routes>
+              </Suspense>
             </main>
             <Footer />
           </div>

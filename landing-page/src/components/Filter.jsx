@@ -8,8 +8,8 @@ import { useContext } from "react";
 function Filter({ filter }) {
   const { setUserFilters } = useContext(AppContext);
 
-  const { key, value: filterContent } = filter;
-  const { type, label, values } = filterContent;
+  const { value: filterContent } = filter;
+  const { label, values } = filterContent;
 
   const renderFilter = () => {
     switch (label) {
@@ -36,7 +36,6 @@ function Filter({ filter }) {
             renderInput={(params) => <TextField {...params} label={label} />}
             sx={{ maxWidth: "100%", width: "100%" }}
             onChange={(event, newValue) => {
-              console.log(newValue);
               setUserFilters((oldFilters) => ({
                 ...oldFilters,
                 category: newValue,
@@ -62,6 +61,12 @@ function Filter({ filter }) {
             )}
             renderInput={(params) => <TextField {...params} label={label} />}
             sx={{ maxWidth: "100%", width: "100%" }}
+            onChange={(event, newValue) => {
+              setUserFilters((oldFilters) => ({
+                ...oldFilters,
+                colors: newValue,
+              }));
+            }}
           />
         );
 
