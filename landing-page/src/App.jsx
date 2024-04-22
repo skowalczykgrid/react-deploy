@@ -1,18 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AppLayout from "./pages/AppLayout/AppLayout";
-import Homepage from "./pages/Homepage/Homepage";
-import Products from "./pages/Products/Products";
-import Product from "./pages/Product/Product";
-import Cart from "./pages/Cart/Cart";
+import Homepage from "./pages/Homepage";
+import Products from "./pages/ProductsPage";
+import Product from "./pages/ProductPage";
+import Cart from "./pages/CartPage";
 import PageNotFound from "./pages/PageNotFound";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
 import { createContext, useEffect, useState } from "react";
 
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
-
-const API_URL = "https://vercel-api-one-gamma.vercel.app/";
 
 const theme = createTheme({
   typography: {
@@ -25,6 +24,16 @@ export const AppContext = createContext();
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [filters, setFilters] = useState({});
+
+  const [userFilters, setUserFilters] = useState({
+    brand: [],
+    category: [],
+    price: [0, 6500],
+    discountPercentage: [],
+    rating: [],
+    colors: [],
+  });
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -94,12 +103,22 @@ function App() {
 
   useEffect(() => {
     async function fetchProducts() {
-      // const response = await fetch("http://localhost:5000/products");
-      const response = await fetch(`api/products`);
+      const response = await fetch("http://localhost:5000/products");
+      // const response = await fetch(`api/products`);
       const data = await response.json();
       setProducts(data);
     }
     fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    async function fetchFilters() {
+      const response = await fetch("http://localhost:5000/filters");
+      // const response = await fetch(`api/filters`);
+      const data = await response.json();
+      setFilters(data);
+    }
+    fetchFilters();
   }, []);
 
   return (
@@ -107,6 +126,7 @@ function App() {
       value={{
         products,
         cart,
+        filters,
         setCart,
         addToCart,
         removeFromCart,
@@ -116,25 +136,29 @@ function App() {
         addToWishlist,
         removeFromWishlist,
         wishlist,
+        userFilters,
+        setUserFilters,
       }}
     >
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<AppLayout />}>
-              <Route index element={<Homepage />} />
-              <Route path="products" element={<Products />} />
-              <Route path="products/:id" element={<Product />} />
-              <Route path="cart" element={<Cart />} />
-              <Route path="*" element={<PageNotFound />} />
-            </Route>
-          </Routes>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex flex-1 flex-col">
+              <Routes>
+                {/* <Route path="/" element={<AppLayout />}> */}
+                <Route index element={<Homepage />} />
+                <Route path="products" element={<Products />} />
+                <Route path="products/:id" element={<Product />} />
+                <Route path="cart" element={<Cart />} />
+                <Route path="*" element={<PageNotFound />} />
+                {/* </Route> */}
+              </Routes>
+            </main>
+            <Footer />
+          </div>
 
-          <SnackbarProvider
-            autoHideDuration={3000}
-
-            // anchorOrigin={{ horizontal: "center", vertical: "top" }}
-          />
+          <SnackbarProvider autoHideDuration={3000} />
         </BrowserRouter>
       </ThemeProvider>
     </AppContext.Provider>

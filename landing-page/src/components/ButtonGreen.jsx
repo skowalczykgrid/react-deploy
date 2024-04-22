@@ -1,8 +1,9 @@
 import Button from "@mui/material/Button";
 
-function ButtonGreen({ children, style }) {
+function ButtonGreen({ children, style, onClick }) {
   return (
     <Button
+      onClick={onClick}
       sx={{
         position: "absolute",
         backgroundColor: "#0CC562",
