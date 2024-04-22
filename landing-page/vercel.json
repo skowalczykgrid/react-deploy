@@ -3,6 +3,9 @@
     {
       "source": "/api/:path*",
       "destination": "https://vercel-api-one-gamma.vercel.app/:path*"
+    },
+    {
+      "rewrites": [{ "source": "/(.*)", "destination": "/" }]
     }
   ]
 }
