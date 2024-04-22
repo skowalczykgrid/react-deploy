@@ -1,12 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { Rating, Checkbox, FormGroup } from "@mui/material";
+import { Rating, Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import { AppContext } from "../App";
 
 function MultipleRatingSelect({ ratings }) {
   const { setUserFilters } = useContext(AppContext);
   const [selectedRatings, setSelectedRatings] = useState([]);
-
-  console.log(selectedRatings);
 
   const handleRatingChange = (ratingValue) => {
     setSelectedRatings((prev) => {
@@ -28,14 +26,23 @@ function MultipleRatingSelect({ ratings }) {
   return (
     <FormGroup>
       {ratings.map((ratingValue) => (
-        <div className="flex items-center" key={ratingValue}>
-          <Checkbox
-            checked={selectedRatings.includes(ratingValue)}
-            onChange={() => handleRatingChange(ratingValue)}
-            inputProps={{ "aria-label": `rating ${ratingValue}` }}
-          />
-          <Rating name={`rating-${ratingValue}`} value={ratingValue} readOnly />
-        </div>
+        <FormControlLabel
+          key={ratingValue}
+          control={
+            <Checkbox
+              checked={selectedRatings.includes(ratingValue)}
+              onChange={handleRatingChange}
+              value={ratingValue}
+            />
+          }
+          label={
+            <Rating
+              name={`rating-${ratingValue}`}
+              value={ratingValue}
+              readOnly
+            />
+          }
+        />
       ))}
     </FormGroup>
   );

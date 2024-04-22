@@ -109,7 +109,7 @@ function App() {
   useEffect(() => {
     async function fetchProducts() {
       // const response = await fetch("http://localhost:5000/products");
-      const response = await fetch(`api/products`);
+      const response = await fetch(`/api/products`);
       const data = await response.json();
       setProducts(data);
     }
@@ -119,7 +119,7 @@ function App() {
   useEffect(() => {
     async function fetchFilters() {
       // const response = await fetch("http://localhost:5000/filters");
-      const response = await fetch(`api/filters`);
+      const response = await fetch(`/api/filters`);
       const data = await response.json();
       setFilters(data);
     }
