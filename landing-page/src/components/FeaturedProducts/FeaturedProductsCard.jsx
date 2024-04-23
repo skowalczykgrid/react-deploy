@@ -19,7 +19,7 @@ function FeaturedProductsCard({ product }) {
 
   return (
     <article className="group z-10 mx-3 my-8 flex h-[368px] w-[304px] flex-col items-center gap-4  rounded-lg shadow-lg transition-all hover:translate-y-[-24px] hover:shadow-2xl">
-      <div className="relative basis-[63%]">
+      <div className="relative basis-[63%] ">
         <div className="absolute m-2 space-x-2 opacity-0 transition-all group-hover:opacity-100">
           <AddToCart color="#7E33E0" hoverBgColor="#E5E0FC" product={product} />
           <WishlistIcon
@@ -41,7 +41,7 @@ function FeaturedProductsCard({ product }) {
         <img
           src={product.thumbnail}
           alt={product.name}
-          className="h-full rounded-lg object-cover"
+          className="h-[232px] rounded-lg object-cover"
         />
       </div>
       <h3 className="no-drag px-3 text-center text-base font-bold text-primary">
