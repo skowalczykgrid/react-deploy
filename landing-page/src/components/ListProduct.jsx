@@ -4,6 +4,13 @@ import WishlistIcon from "./WishlistIcon";
 import GoToProduct from "./GoToProduct";
 
 function ListProduct({ product, type }) {
+  const shortenDescription = (description, maxLength = 80) => {
+    if (description.length > maxLength) {
+      return description.substring(0, maxLength) + "...";
+    }
+    return description;
+  };
+
   return (
     <article
       className={`flex rounded-lg  p-4 shadow-2xl ${type === "list" ? "w-[976px] gap-8" : "h-[448px] w-[304px] flex-col gap-4"}`}
@@ -39,7 +46,7 @@ function ListProduct({ product, type }) {
           </span>
         </div>
         <p className="text-grey-3 text-base font-light capitalize">
-          {product.description}
+          {shortenDescription(product.description)}
         </p>
 
         <div className="mt-auto flex gap-6">
