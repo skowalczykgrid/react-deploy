@@ -6,7 +6,7 @@ import { AppContext } from "../App";
 import { useContext } from "react";
 
 function Filter({ filter }) {
-  const { setUserFilters } = useContext(AppContext);
+  const { setUserFilters, userFilters } = useContext(AppContext);
 
   const { value: filterContent } = filter;
   const { label, values } = filterContent;
@@ -18,6 +18,7 @@ function Filter({ filter }) {
           <Autocomplete
             multiple
             options={values}
+            value={userFilters[label.toLowerCase()] || []}
             renderInput={(params) => <TextField {...params} label={label} />}
             sx={{ maxWidth: "100%", width: "100%" }}
             onChange={(event, newValue) => {
@@ -33,6 +34,7 @@ function Filter({ filter }) {
           <Autocomplete
             multiple
             options={values}
+            value={userFilters[label.toLowerCase()] || []}
             renderInput={(params) => <TextField {...params} label={label} />}
             sx={{ maxWidth: "100%", width: "100%" }}
             onChange={(event, newValue) => {
@@ -53,6 +55,7 @@ function Filter({ filter }) {
         return (
           <Autocomplete
             multiple
+            value={userFilters[label.toLowerCase()] || []}
             options={values}
             renderOption={(props, option) => (
               <li {...props} key={`${option}-${props.id}`}>

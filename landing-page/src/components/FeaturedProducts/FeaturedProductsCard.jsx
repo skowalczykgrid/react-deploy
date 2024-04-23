@@ -34,11 +34,9 @@ function FeaturedProductsCard({ product }) {
           />
         </div>
         <div className="opacity-0 transition-all group-hover:opacity-100">
-          <ButtonGreen onClick={scrollToTop}>
-            <Link to={`/products/${product.id}`} state={{ product }}>
-              View Details
-            </Link>
-          </ButtonGreen>
+          <Link to={`/products/${product.id}`} state={{ product }}>
+            <ButtonGreen onClick={scrollToTop}>View Details</ButtonGreen>
+          </Link>
         </div>
         <img
           src={product.thumbnail}

@@ -3,17 +3,18 @@ import { Rating, Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import { AppContext } from "../App";
 
 function MultipleRatingSelect({ ratings }) {
-  const { setUserFilters } = useContext(AppContext);
+  const { userFilters, setUserFilters } = useContext(AppContext);
   const [selectedRatings, setSelectedRatings] = useState([]);
 
-  const handleRatingChange = (ratingValue) => {
-    setSelectedRatings((prev) => {
-      if (prev.includes(ratingValue)) {
-        return prev.filter((r) => r !== ratingValue);
-      } else {
-        return [...prev, ratingValue];
-      }
-    });
+  const handleCheckboxChange = (event) => {
+    const value = event.target.value;
+    const numberValue = +value;
+
+    setSelectedRatings((currentRatings) =>
+      currentRatings.includes(numberValue)
+        ? currentRatings.filter((rating) => rating !== numberValue)
+        : [...currentRatings, numberValue],
+    );
   };
 
   useEffect(() => {
@@ -30,9 +31,15 @@ function MultipleRatingSelect({ ratings }) {
           key={ratingValue}
           control={
             <Checkbox
-              checked={selectedRatings.includes(ratingValue)}
-              onChange={handleRatingChange}
+              checked={userFilters.rating?.includes(ratingValue)}
+              onChange={handleCheckboxChange}
               value={ratingValue}
+              sx={{
+                color: "gray",
+                "&.Mui-checked": {
+                  color: "#FB2E86",
+                },
+              }}
             />
           }
           label={

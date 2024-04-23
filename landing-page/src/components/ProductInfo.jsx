@@ -13,7 +13,7 @@ function ProductInfo({ product }) {
   };
 
   return (
-    <section className="p bg-[#F8F8FD] px-[416px] pt-[64px]">
+    <section className="bg-[#F8F8FD] px-[416px] pt-[64px]">
       <TabContext value={tab}>
         <Tabs
           onChange={handleChange}

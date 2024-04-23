@@ -4,7 +4,7 @@ import { AppContext } from "../App";
 
 function DiscountSelect({ discountOptions }) {
   const [selectedDiscounts, setSelectedDiscounts] = useState([]);
-  const { setUserFilters } = useContext(AppContext);
+  const { userFilters, setUserFilters } = useContext(AppContext);
 
   useEffect(() => {
     setUserFilters((oldFilters) => ({
@@ -31,9 +31,15 @@ function DiscountSelect({ discountOptions }) {
           key={discount}
           control={
             <Checkbox
-              checked={selectedDiscounts.includes(discount)}
+              checked={userFilters.discountPercentage?.includes(discount)}
               onChange={handleCheckboxChange}
               value={discount}
+              sx={{
+                color: "gray",
+                "&.Mui-checked": {
+                  color: "#FB2E86",
+                },
+              }}
             />
           }
           label={`${discount}%`}
