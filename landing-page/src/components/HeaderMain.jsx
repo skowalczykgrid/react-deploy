@@ -7,7 +7,7 @@ function HeaderMain() {
   return (
     <div className="flex h-[72px] items-center justify-center px-[304px] py-5">
       <div className="flex  w-[1920px] items-center gap-[80px]">
-        <Logo />
+        <Logo className="h-[28px] w-[100px]" />
         <Navigation className="mr-auto" />
         <SearchBarFunctional />
       </div>

@@ -6,11 +6,11 @@ import EmailInput from "./EmailInput";
 
 function Footer() {
   return (
-    <footer className="flex flex-col ">
+    <footer className="flex h-[544px] flex-col">
       <div className="flex h-[488px] justify-center bg-[#F8F8FD] px-[304px] py-[94px]">
         <div className="flex w-[1920px] justify-center gap-[130px]">
           <div className="flex flex-col gap-8">
-            <Logo className="h-8 w-[103px]" />
+            <Logo className="h-[28px] w-[100px]" />
             <EmailInput />
             <p className="font-light text-[#8A8FB9]">
               17 Princess Road, London, Greater London NW1 8JR, UK
@@ -82,12 +82,20 @@ function Footer() {
             ©Webecy - All Rights Reserved
           </p>
           <div className="flex items-center gap-4">
-            <img src={facebookLogo} alt="facebook" className="cursor-pointer" />
-            <img src={twitterLogo} alt="twitter" className="cursor-pointer" />
+            <img
+              src={facebookLogo}
+              alt="facebook"
+              className="h-6 w-6 cursor-pointer"
+            />
+            <img
+              src={twitterLogo}
+              alt="twitter"
+              className="h-6 w-6 cursor-pointer"
+            />
             <img
               src={instagramLogo}
               alt="instagram"
-              className="cursor-pointer"
+              className="h-6 w-6 cursor-pointer"
             />
           </div>
         </div>

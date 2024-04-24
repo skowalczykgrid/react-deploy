@@ -39,7 +39,7 @@ function ProductRight({ product }) {
   };
 
   return (
-    <div className="ml-[112px] flex flex-col gap-2 pt-10">
+    <div className="ml-[112px] flex w-[410px] flex-col gap-2 pt-10">
       <h3 className="text-[36px] font-bold text-textPrimary">
         {product.category}
       </h3>
