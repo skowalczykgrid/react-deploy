@@ -4,19 +4,19 @@ import Button from "@mui/material/Button";
 function Hero() {
   return (
     <section className="relative flex h-[760px] justify-center gap-[56px] bg-[#F2F0FF]">
-      <img
-        src="./assets/hero-section/lamp.png"
-        alt="lamp"
-        className="absolute left-[70px] top-0 h-[387px] w-[387px]"
-      />
-
-      <img
-        src="./assets/pink-dot.svg"
-        alt=""
-        className="absolute bottom-[242px] left-[184px]"
-      />
-
       <div className="relative ml-[260px] flex max-w-[570px] flex-col gap-4 pt-[203px]">
+        <img
+          src="./assets/hero-section/lamp.png"
+          alt="lamp"
+          className="absolute left-[-350px] top-0 h-[387px] w-[387px]"
+        />
+
+        <img
+          src="./assets/pink-dot.svg"
+          alt=""
+          className="absolute bottom-[242px]  left-[-250px]"
+        />
+
         <h5 className="text-base font-bold text-primary">
           Best Headphones For Your Life....
         </h5>
