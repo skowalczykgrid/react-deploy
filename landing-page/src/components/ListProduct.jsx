@@ -2,24 +2,29 @@ import Rating from "@mui/material/Rating";
 import AddToCartButton from "./AddToCartButton";
 import WishlistIcon from "./WishlistIcon";
 import GoToProduct from "./GoToProduct";
+import { Link } from "react-router-dom";
 
 function ListProduct({ product, type }) {
-  const shortenDescription = (description, maxLength = 80) => {
-    if (description.length > maxLength) {
-      return description.substring(0, maxLength) + "...";
+  const maxDescriptionLength = type === "list" ? 130 : 60;
+
+  const shorten = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
     }
-    return description;
+    return text;
   };
 
   return (
     <article
       className={`flex rounded-lg  p-4 shadow-2xl ${type === "list" ? "w-[976px] gap-8" : "h-[448px] w-[304px] flex-col gap-4"}`}
     >
-      <img
-        src={product.thumbnail}
-        alt={product.name}
-        className="h-[200px] w-[288px] rounded-lg object-cover"
-      />
+      <Link to={`/products/${product.id}`} state={{ product }}>
+        <img
+          src={product.thumbnail}
+          alt={product.name}
+          className="h-[200px] w-[288px] rounded-lg object-cover transition-all hover:-translate-y-[1px]"
+        />
+      </Link>
 
       <div
         className={`flex flex-1 flex-col gap-2 ${type === "grid" && "px-2"}`}
@@ -27,9 +32,11 @@ function ListProduct({ product, type }) {
         <div
           className={`flex justify-between ${type === "grid" && "flex-col"}`}
         >
-          <h5 className="text-[20px] font-bold text-textPrimary">
-            {product.name}
-          </h5>
+          <Link to={`/products/${product.id}`} state={{ product }}>
+            <h5 className=" whitespace-nowrap text-[20px] font-bold text-textPrimary hover:underline ">
+              {shorten(product.name, 23)}
+            </h5>
+          </Link>
           <Rating
             name="read-only"
             value={product.rating.value}
@@ -46,7 +53,7 @@ function ListProduct({ product, type }) {
           </span>
         </div>
         <p className="text-grey-3 text-base font-light capitalize">
-          {shortenDescription(product.description)}
+          {shorten(product.description, maxDescriptionLength)}
         </p>
 
         <div className="mt-auto flex gap-6">
