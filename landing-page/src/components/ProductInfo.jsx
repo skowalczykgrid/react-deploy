@@ -14,7 +14,7 @@ function ProductInfo({ product }) {
 
   return (
     <section className="flex flex-col bg-[#F8F8FD] px-[416px] pt-[64px]">
-      <div className="max-w-[1920px] self-center">
+      <div className="w-[1073px] self-center">
         <TabContext value={tab}>
           <Tabs
             onChange={handleChange}
