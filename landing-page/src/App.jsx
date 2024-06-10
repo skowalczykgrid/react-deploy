@@ -162,7 +162,6 @@ function App() {
             </main>
             <Footer />
           </div>
-
           <SnackbarProvider autoHideDuration={3000} />
         </BrowserRouter>
       </ThemeProvider>
